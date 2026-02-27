@@ -12,12 +12,24 @@ export default function Portfolio() {
     { name: "Mobile", icon: <Smartphone className="w-5 h-5" />, tech: "Flutter" },
   ];
 
+  const skillsList = [ 
+    "OpenCV", "YOLO Ultralytics", "scikit-learn", "Pandas", "NumPy", "Matplotlib", "seaborn",
+    "Node.js", "Bootstrap", "Java", "Express.js", "FastAPI", "Flask", "SQL", "Postman API", "Git/GitHub",
+    "Python", "Vue.js", "Nuxt.js", "React/Next.js", "Flutter", "TypeScript", "PostgreSQL", "MySQL", "MongoDB", "AWS", "Agile Methodology", "Scrum"
+  ];
+
+  // Membagi skills menjadi 3 baris agar bisa dianimasikan terpisah
+  const row1 = skillsList.slice(0, 11);
+  const row2 = skillsList.slice(11, 23);
+  const row3 = skillsList.slice(23, 34);
+  const skillRows = [row1, row2, row3];
+
   const educations = [
     {
       degree: "Computer Science",
       institution: "Lambung Mangkurat University",
-      period: "Aug 2023 - Aug 2027",
-      desc: "Focused on Full-Stack Development, Teamwork, and core computer science disciplines.",
+      period: "Aug 2023 - Present",
+      desc: "GPA : 3.80",
     },
     {
       degree: "Computer and Network Engineering",
@@ -100,7 +112,7 @@ export default function Portfolio() {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 font-sans selection:bg-blue-500/30">
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 font-sans selection:bg-blue-500/30 overflow-x-hidden">
       <main className="max-w-4xl pt-20 pb-12 mx-auto px-6 sm:pt-24 sm:pb-12 flex flex-col gap-24">
 
         {/* Hero Section */}
@@ -140,7 +152,7 @@ export default function Portfolio() {
           </motion.div>
         </section>
 
-        {/* About Me Section (UPDATED WITH IMAGE) */}
+        {/* About Me Section */}
         <section>
           <motion.div
             initial={{ opacity: 0 }}
@@ -161,7 +173,6 @@ export default function Portfolio() {
               transition={{ duration: 0.5 }}
               className="relative w-48 h-48 sm:w-64 sm:h-64 shrink-0 rounded-2xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-800 shadow-lg rotate-3 hover:rotate-0 transition-transform duration-300"
             >
-              {/* PASTIKAN FILE profile.jpg ADA DI FOLDER public */}
               <Image 
                 src="/profile.jpg" 
                 alt="Bima Arya Sena"
@@ -177,7 +188,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed"
+              className="text-zinc-600 dark:text-zinc-400 text-lg text-justify leading-relaxed"
             >
               <p>
                 Computer Science Undergraduate at Lambung Mangkurat University with a strong background in Full-Stack Development. Passionate about bridging Software Engineering and Data Science to build scalable, efficient tech solutions. Committed to continuous learning and driving innovation in the technology sector.
@@ -186,7 +197,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Keahlian Section */}
+        {/* Keahlian Section (Hard Skills - Kartu) */}
         <section>
           <motion.h3
             initial={{ opacity: 0 }}
@@ -366,6 +377,57 @@ export default function Portfolio() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+
+        {/* Skills Section BARU (Animasi Berjalan / Marquee) */}
+        <section className="relative w-full overflow-hidden pt-8 pb-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center mb-10"
+          >
+            <h3 className="text-3xl font-semibold text-zinc-900 dark:text-zinc-50">Technologies & Tools</h3>
+          </motion.div>
+
+          {/* Efek Gradasi Pudar di Kiri dan Kanan */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-zinc-50 dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-zinc-50 dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
+
+          <div className="flex flex-col gap-4 w-full">
+            {skillRows.map((row, rowIndex) => {
+              // Menentukan arah berdasarkan baris (ganjil/genap)
+              const isEven = rowIndex % 2 !== 0; 
+
+              return (
+                <motion.div
+                  key={rowIndex}
+                  className="flex flex-nowrap gap-4 w-max"
+                  // Jika baris ganjil, geser ke kiri (0% ke -50%)
+                  // Jika baris genap, geser ke kanan (-50% ke 0%)
+                  animate={{
+                    x: isEven ? ["-50%", "0%"] : ["0%", "-50%"],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    ease: "linear",
+                    duration: 35, // Diperlambat sedikit agar lebih mudah dibaca
+                  }}
+                >
+                  {/* Kita duplikasi array-nya ([...row, ...row]) agar animasinya menyambung tanpa putus */}
+                  {[...row, ...row].map((skill, index) => (
+                    <span
+                      key={index}
+                      className="px-4 py-2 text-sm sm:text-base font-medium rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-blue-500 hover:text-blue-500 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-colors cursor-default whitespace-nowrap"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </motion.div>
+              );
+            })}
           </div>
         </section>
 
