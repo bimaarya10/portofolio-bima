@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Layout, Smartphone, Briefcase, User, Users, GraduationCap } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { projects } from "../data/project"; // Sesuaikan path jika menggunakan folder src
 
 export default function Portfolio() {
   const skills = [
@@ -96,39 +98,6 @@ export default function Portfolio() {
       organization: "HIMAKOM FMIPA ULM 2024",
       period: "Feb 2024 - Dec 2024",
       desc: "Associated with Lambung Mangkurat University.",
-    }
-  ];
-
-  const projects = [
-    {
-      title: "ERPGo - PT Ruang Algo Multimatics",
-      desc: "ERPGo is a web-based multi-tenant ERP solution developed to optimize core business operations, including sales, procurement, finance, logistics, HR, and production. The platform integrates a dedicated Point of Sale (POS) module and a separate Online Order system that manages both Customer and Cashier Orders. It is designed to support SMEs and institutions in integrating their workflows through real-time data access and centralized control.",
-      tags: ["Fullstack", "TypeScript",  "Nuxt.js","System Architecture", "Web"],
-    },
-    {
-      title: "CLINICALgo - PT Ruang Algo Multimatics",
-      desc: "CLINICALgo is a comprehensive web-based Clinic Management System designed to streamline healthcare operations. It centralizes patient administration, electronic medical records (EMR), and appointment scheduling, alongside essential clinic management features like pharmacy inventory and billing to enhance service delivery and operational efficiency",
-      tags: ["Fullstack", "TypeScript",  "Nuxt.js", "Loopback.io","System Architecture", "Web"],
-    },
-    {
-      title: "Brew Chat - Lambung Mangkurat University",
-      desc: "Brew Chat is a mobile community platform connecting coffee enthusiasts through real-time group messaging. The app features location-based services to recommend nearby coffee shops and provides visitor traffic insights, allowing users to gauge venue popularity and crowd levels.",
-      tags: ["Node.js", "Socket.io", "Mobile App"],
-    },
-    {
-      title: "Twitter Sentiment Analysis: #BubarkanDPR",
-      desc: "A text mining project analyzing public sentiment on Twitter during massive protests and civil unrest directed at the parliament. The data pipeline involved crawling tweets using Tweepy, preprocessing text with Sastrawi, and extracting features via TF-IDF (Unigram and Bigram). Five machine learning algorithms were evaluated using K-Fold Cross-Validation, with the Linear SVM model achieving the highest performance at 94.60% accuracy and a 94.91% F1 Score.",
-      tags: ["Python", "Machine Learning", "NLP", "SVM", "Tweepy", "TF-IDF"],
-    },
-    {
-      title: "Twitter Sentiment Analysis: #Sumatera",
-      desc: "A text mining project analyzing public sentiment on Twitter regarding hydrometeorological disasters (floods and landslides) in Sumatra. The study assesses public criticism of legislative bodies concerning disaster mitigation infrastructure. The pipeline involved data crawling using Tweepy, text preprocessing with Sastrawi, and automatic labeling using InSet Lexicon. Evaluated across five machine learning algorithms, the Linear SVM model achieved the highest accuracy of 95.10% on lexicon-labeled data, while Logistic Regression performed best on manually labeled data at 80.00%.",
-      tags: ["Python", "Machine Learning", "NLP", "SVM", "Logistic Regression"],
-    },
-    {
-      title: "Iris Flower Species Classification using CNNs",
-      desc: "A computer vision project focused on classifying Iris flower species from digital images. The study involved building a custom baseline Convolutional Neural Network (CNN), applying data augmentation, and performing hyperparameter tuning using Keras Tuner (Hyperband). Furthermore, Transfer Learning and Fine-Tuning techniques were implemented utilizing pre-trained MobileNetV2 and ResNet50 architectures. The fine-tuned ResNet50 model achieved the highest validation accuracy of 69.04%.",
-      tags: ["Python", "Computer Vision", "TensorFlow/Keras", "CNN", "Transfer Learning", "ResNet50"],
     }
   ];
 
@@ -362,44 +331,45 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Proyek Section */}
-        <section>
-          <motion.h3
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-2xl font-semibold mb-8 border-b border-zinc-200 dark:border-zinc-800 pb-4"
-          >
-            Projects
-          </motion.h3>
-          <div className="flex flex-col gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="group relative p-8 rounded-3xl bg-zinc-100 dark:bg-zinc-900/50 hover:bg-white dark:hover:bg-zinc-900 border border-transparent hover:border-zinc-200 dark:hover:border-zinc-800 transition-all duration-300"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <h4 className="text-xl font-semibold">{project.title}</h4>
-                  <ExternalLink className="w-5 h-5 text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors cursor-pointer" />
-                </div>
-                <p className="text-zinc-600 dark:text-zinc-400 mb-6 max-w-2xl leading-relaxed">
-                  {project.desc}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, i) => (
-                    <span key={i} className="px-3 py-1 text-sm rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+{/* Proyek Section */}
+     <section>
+       <motion.h3
+         initial={{ opacity: 0 }}
+         whileInView={{ opacity: 1 }}
+         viewport={{ once: true }}
+         className="text-2xl font-semibold mb-8 border-b border-zinc-200 dark:border-zinc-800 pb-4"
+       >
+         Projects
+       </motion.h3>
+       <div className="flex flex-col gap-8">
+         {projects.map((project, index) => (
+           <Link href={`/project/${project.id}`} key={index}> {/* BUNGKUS DENGAN LINK */}
+             <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: index * 0.2 }}
+               className="group relative p-8 rounded-3xl bg-zinc-100 dark:bg-zinc-900/50 hover:bg-white dark:hover:bg-zinc-900 border border-transparent hover:border-zinc-200 dark:hover:border-zinc-800 transition-all duration-300 cursor-pointer"
+             >
+               <div className="flex justify-between items-start mb-4">
+                 <h4 className="text-xl font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h4>
+                 <ExternalLink className="w-5 h-5 text-zinc-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+               </div>
+               <p className="text-zinc-600 dark:text-zinc-400 mb-6 max-w-2xl leading-relaxed">
+                 {project.desc}
+               </p>
+               <div className="flex flex-wrap gap-2">
+                 {project.tags.map((tag, i) => (
+                   <span key={i} className="px-3 py-1 text-sm rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                     {tag}
+                   </span>
+                 ))}
+               </div>
+             </motion.div>
+           </Link>
+         ))}
+       </div>
+     </section>
 
 
         {/* Skills Section BARU (Animasi Berjalan / Marquee) */}
