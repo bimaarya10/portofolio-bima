@@ -13,7 +13,7 @@ export default function Portfolio() {
   ];
 
   const skillsList = [ 
-    "OpenCV", "YOLO Ultralytics", "scikit-learn", "Pandas", "NumPy", "Matplotlib", "seaborn",
+    "OpenCV", "YOLO Ultralytics", "scikit-learn", "Pandas", "NumPy", "Matplotlib", "seaborn", "TensorFlow/Keras", "CNN", "Transfer Learning", "ResNet50",
     "Node.js", "Bootstrap", "Java", "Express.js", "FastAPI", "Flask", "SQL", "Postman API", "Git/GitHub",
     "Python", "Vue.js", "Nuxt.js", "React/Next.js", "Flutter", "TypeScript", "PostgreSQL", "MySQL", "MongoDB", "AWS", "Agile Methodology", "Scrum"
   ];
@@ -32,6 +32,12 @@ export default function Portfolio() {
       desc: "GPA : 3.80",
     },
     {
+      degree: "Data Science Cohort Learning Path",
+      institution: "Coding Camp powered by DBS Foundation",
+      period: "Feb 2026 - Present",
+      desc: "Participated in an intensive coding camp focusing on Data Science methodologies, machine learning, and practical data analysis.",
+    },
+    {
       degree: "Computer and Network Engineering",
       institution: "SMK Negeri 2 Banjarbaru",
       period: "Jul 2020 - Mar 2023",
@@ -41,16 +47,16 @@ export default function Portfolio() {
 
   const experiences = [
     {
-      title: "Laboratory Assistant",
-      organization: "Lambung Mangkurat University",
-      period: "Sep 2025 - Present",
-      desc: "Teaching Assistant for the Numerical Analysis Course.",
-    },
-    {
       title: "Full Stack Developer",
       organization: "RuangAlgo.com - IT Solutions",
       period: "Dec 2024 - Present",
-      desc: "Freelance professional utilizing TypeScript, PostgreSQL, and various other modern web technologies to build comprehensive IT solutions.",
+      desc: "Freelance professional utilizing TypeScript, PostgreSQL, and various other modern web technologies to build comprehensive IT solutions. Working within an Agile environment and implementing Scrum methodologies to ensure efficient, iterative development and continuous project delivery.",
+    },
+    {
+      title: "Laboratory Assistant",
+      organization: "Lambung Mangkurat University",
+      period: "Sep 2025 - Nov 2025",
+      desc: "Teaching Assistant for the Numerical Analysis Course.",
     },
     {
       title: "Laboratory Assistant",
@@ -109,6 +115,21 @@ export default function Portfolio() {
       desc: "Brew Chat is a mobile community platform connecting coffee enthusiasts through real-time group messaging. The app features location-based services to recommend nearby coffee shops and provides visitor traffic insights, allowing users to gauge venue popularity and crowd levels.",
       tags: ["Node.js", "Socket.io", "Mobile App"],
     },
+    {
+      title: "Twitter Sentiment Analysis: #BubarkanDPR",
+      desc: "A text mining project analyzing public sentiment on Twitter during massive protests and civil unrest directed at the parliament. The data pipeline involved crawling tweets using Tweepy, preprocessing text with Sastrawi, and extracting features via TF-IDF (Unigram and Bigram). Five machine learning algorithms were evaluated using K-Fold Cross-Validation, with the Linear SVM model achieving the highest performance at 94.60% accuracy and a 94.91% F1 Score.",
+      tags: ["Python", "Machine Learning", "NLP", "SVM", "Tweepy", "TF-IDF"],
+    },
+    {
+      title: "Twitter Sentiment Analysis: #Sumatera",
+      desc: "A text mining project analyzing public sentiment on Twitter regarding hydrometeorological disasters (floods and landslides) in Sumatra. The study assesses public criticism of legislative bodies concerning disaster mitigation infrastructure. The pipeline involved data crawling using Tweepy, text preprocessing with Sastrawi, and automatic labeling using InSet Lexicon. Evaluated across five machine learning algorithms, the Linear SVM model achieved the highest accuracy of 95.10% on lexicon-labeled data, while Logistic Regression performed best on manually labeled data at 80.00%.",
+      tags: ["Python", "Machine Learning", "NLP", "SVM", "Logistic Regression"],
+    },
+    {
+      title: "Iris Flower Species Classification using CNNs",
+      desc: "A computer vision project focused on classifying Iris flower species from digital images. The study involved building a custom baseline Convolutional Neural Network (CNN), applying data augmentation, and performing hyperparameter tuning using Keras Tuner (Hyperband). Furthermore, Transfer Learning and Fine-Tuning techniques were implemented utilizing pre-trained MobileNetV2 and ResNet50 architectures. The fine-tuned ResNet50 model achieved the highest validation accuracy of 69.04%.",
+      tags: ["Python", "Computer Vision", "TensorFlow/Keras", "CNN", "Transfer Learning", "ResNet50"],
+    }
   ];
 
   return (
