@@ -78,8 +78,8 @@ export default function TechMarquee() {
       {/* Marquee Wrapper with soft edge gradients */}
       <div className="relative w-full overflow-hidden">
         {/* Soft edge gradient fades */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-zinc-50 dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-zinc-50 dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-[#f8faff] dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-[#f8faff] dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
 
         <div className="flex flex-col gap-3.5">
           {skillsMarqueeRows.map((row, index) => (

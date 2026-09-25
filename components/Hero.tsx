@@ -79,28 +79,28 @@ export default function Hero({ onEasterEggTrigger }: HeroProps) {
     { name: "GitHub", href: personalInfo.socials.github, icon: Github, target: "_blank" },
     { name: "LinkedIn", href: personalInfo.socials.linkedin, icon: Linkedin, target: "_blank" },
   ];
-
   return (
-    /*
-     * Hero section
-     * - pt accounts for the ~64–72 px floating navbar (py-5 × 2 ≈ 40 px + pill ~28 px)
-     * - We use min-h that feels natural without excessive empty space
-     */
     <section
       id="hero"
-      className="relative flex items-center pt-20 pb-10 min-h-[calc(100vh-1rem)] sm:min-h-[calc(100vh-2rem)]"
+      className="relative flex items-center pt-20 pb-10 sm:pb-12 lg:pb-14 -mb-6 sm:-mb-8"
     >
       {/* ── Subtle background ── */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
         {/* Dot pattern fading out from top */}
-        <div className="absolute inset-0 bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] dark:bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_15%,#000_60%,transparent_100%)] opacity-50" />
+        <div className="absolute inset-0 bg-[radial-gradient(#bfdbfe_1px,transparent_1px)] dark:bg-[radial-gradient(#1e3a5f_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_15%,#000_60%,transparent_100%)] opacity-40" />
+
+        {/* Blue radial glow behind photo area (right side) */}
+        <div className="absolute top-0 right-0 w-[55%] h-full bg-[radial-gradient(ellipse_60%_70%_at_80%_45%,rgba(59,130,246,0.09),transparent_70%)] dark:bg-[radial-gradient(ellipse_60%_70%_at_80%_45%,rgba(59,130,246,0.12),transparent_70%)]" />
+
+        {/* Soft left-side blue tint */}
+        <div className="absolute top-0 left-0 w-1/2 h-full bg-[radial-gradient(ellipse_50%_60%_at_10%_30%,rgba(99,102,241,0.05),transparent_70%)] dark:bg-[radial-gradient(ellipse_50%_60%_at_10%_30%,rgba(99,102,241,0.07),transparent_70%)]" />
 
         {/* Animated blob — very subtle */}
         {!shouldReduceMotion && (
           <motion.div
             animate={{ x: [0, 20, -16, 0], y: [0, -24, 12, 0], scale: [1, 1.06, 0.97, 1] }}
             transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-20 -left-20 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-blue-400/[0.06] dark:bg-blue-500/[0.08] blur-3xl"
+            className="absolute -top-20 -left-20 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-blue-400/[0.08] dark:bg-blue-500/[0.10] blur-3xl"
           />
         )}
       </div>
@@ -214,8 +214,10 @@ export default function Hero({ onEasterEggTrigger }: HeroProps) {
             className="relative"
             style={{ perspective: 1000 }}
           >
-            {/* Very soft glow — reduced vs before */}
-            <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-blue-400/12 via-indigo-400/6 to-transparent blur-2xl pointer-events-none" />
+            {/* Outer soft blue glow ring */}
+            <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-blue-400/18 via-indigo-400/10 to-blue-500/8 blur-2xl pointer-events-none" />
+            {/* Inner tighter glow for depth */}
+            <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-blue-300/10 via-transparent to-indigo-400/8 blur-md pointer-events-none" />
 
             {/* Photo */}
             <motion.div
@@ -227,16 +229,16 @@ export default function Hero({ onEasterEggTrigger }: HeroProps) {
                 "border border-zinc-200/80 dark:border-zinc-800",
                 "shadow-lg shadow-zinc-900/8 dark:shadow-black/25",
                 "bg-zinc-100 dark:bg-zinc-900",
-                // Responsive sizes — large on desktop, controlled on mobile
-                "w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80",
+                // Portrait 4:5 ratio — shows head + shoulders + upper body
+                "w-52 h-[260px] sm:w-[270px] sm:h-[338px] md:w-[290px] md:h-[362px] lg:w-[340px] lg:h-[425px]",
               ].join(" ")}
             >
               <Image
                 src={personalInfo.avatar}
                 alt={`Profile photo of ${personalInfo.name}`}
                 fill
-                sizes="(max-width: 640px) 208px, (max-width: 768px) 256px, (max-width: 1024px) 288px, 320px"
-                className="object-cover object-top"
+                sizes="(max-width: 640px) 208px, (max-width: 768px) 270px, (max-width: 1024px) 290px, 340px"
+                className="object-cover object-center"
                 priority
               />
             </motion.div>

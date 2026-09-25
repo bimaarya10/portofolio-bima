@@ -50,7 +50,7 @@ function SkillCard({ skill, index }: { skill: SkillCategory; index: number }) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative rounded-2xl bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800 hover:border-blue-500/50 dark:hover:border-blue-500/40 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-blue-500/5 overflow-hidden flex flex-col gap-4"
+      className="group relative rounded-2xl bg-white/90 dark:bg-zinc-900/70 border border-zinc-200/70 dark:border-zinc-800 hover:border-blue-400/60 dark:hover:border-blue-500/40 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-blue-500/8 dark:hover:shadow-blue-500/5 overflow-hidden flex flex-col gap-4"
     >
       {/* Cursor spotlight */}
       <div
@@ -83,7 +83,7 @@ function SkillCard({ skill, index }: { skill: SkillCategory; index: number }) {
         {skill.items.map((item, i) => (
           <span
             key={i}
-            className="text-[11px] px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors"
+            className="text-[11px] px-2 py-0.5 rounded-md bg-blue-50/70 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-400 border border-blue-100/60 dark:border-transparent group-hover:bg-blue-50 group-hover:text-blue-700 dark:group-hover:text-zinc-200 group-hover:border-blue-200/60 transition-colors"
           >
             {item}
           </span>
@@ -95,7 +95,9 @@ function SkillCard({ skill, index }: { skill: SkillCategory; index: number }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="pt-12">
+    <section id="skills" className="relative pt-12">
+      {/* Subtle alternating section tint */}
+      <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-[#f5f8ff]/80 via-white/60 to-transparent dark:from-transparent dark:to-transparent pointer-events-none" />
       <motion.div
         initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}

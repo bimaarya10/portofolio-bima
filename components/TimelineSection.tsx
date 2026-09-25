@@ -82,7 +82,9 @@ export default function TimelineSection() {
   const showOrganization = filter === "all" || filter === "organization";
 
   return (
-    <section id="experience" className="pt-12">
+    <section id="experience" className="relative pt-12">
+      {/* Alternating subtle section tint */}
+      <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-b from-transparent via-[#f0f5ff]/30 to-transparent dark:from-transparent dark:via-blue-950/5 dark:to-transparent pointer-events-none" />
       {/* Header with filter tabs */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 pb-4 border-b border-zinc-200 dark:border-zinc-800/80">
         <div className="flex items-center gap-2.5">
