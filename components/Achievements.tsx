@@ -69,15 +69,15 @@ function AchievementCard({
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="group relative rounded-2xl bg-white/90 dark:bg-zinc-900/70 border border-zinc-200/70 dark:border-zinc-800 hover:border-blue-400/60 dark:hover:border-blue-500/40 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-blue-500/8 dark:hover:shadow-blue-500/5 overflow-hidden flex flex-col gap-3"
+      className="group relative rounded-2xl bg-white/90 dark:bg-zinc-900/70 border border-zinc-200/70 dark:border-zinc-800 hover:border-blue-400/60 dark:hover:border-blue-500/40 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-blue-500/8 dark:hover:shadow-blue-500/5 overflow-hidden flex flex-col justify-between"
     >
-      {/* Icon + Title row */}
-      <div className="flex items-start gap-3">
-        <div className="shrink-0 p-2 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-950/70 transition-colors duration-200">
+      {/* Top Content: Icon, Title, and Description */}
+      <div className="flex items-start gap-3.5">
+        <div className="shrink-0 p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-950/70 transition-colors duration-200">
           <Icon className="w-5 h-5" />
         </div>
-        <div className="flex flex-col gap-1 min-w-0">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+        <div className="flex flex-col gap-1.5 min-w-0">
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             {achievement.title}
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -86,32 +86,38 @@ function AchievementCard({
         </div>
       </div>
 
-      {/* Meta info */}
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-2 border-t border-zinc-100 dark:border-zinc-800/60">
-        {/* Year / Issued date */}
-        <span className="inline-flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400 font-mono">
-          <CalendarDays className="w-3 h-3" />
-          {achievement.issuedDate ?? achievement.year}
-        </span>
-
-        {/* Organization (funding type) */}
+      {/* Card Footer: Penyelenggara (Top row) + Tanggal & Jenis (Bottom row) */}
+      <div className="mt-5 pt-3.5 border-t border-zinc-100 dark:border-zinc-800/80 flex flex-col gap-2.5">
+        {/* Penyelenggara / Organizer */}
         {achievement.organization && (
-          <span className="inline-flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400">
-            <Award className="w-3 h-3 text-blue-500 dark:text-blue-400" />
-            {achievement.organization}
-          </span>
+          <div className="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-400">
+            <Award className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400 shrink-0 mt-0.5" />
+            <span className="leading-snug">
+              <span className="text-zinc-400 dark:text-zinc-500">Issued by </span>
+              <span className="font-medium text-zinc-700 dark:text-zinc-200">
+                {achievement.organization}
+              </span>
+            </span>
+          </div>
         )}
 
-        {/* Type badge */}
-        <span
-          className={`ml-auto text-[10px] px-2 py-0.5 rounded-full font-medium ${
-            isCompetition
-              ? "bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200/60 dark:border-blue-800/50"
-              : "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/50"
-          }`}
-        >
-          {isCompetition ? "Competition" : "Program Recognition"}
-        </span>
+        {/* Bottom Meta Row: Tanggal (Left) & Jenis Badge (Right) */}
+        <div className="flex items-center justify-between gap-2 pt-0.5">
+          <div className="inline-flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 font-mono">
+            <CalendarDays className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 shrink-0" />
+            <span>{achievement.issuedDate ?? achievement.year}</span>
+          </div>
+
+          <span
+            className={`text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full font-medium tracking-wide shrink-0 ${
+              isCompetition
+                ? "bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200/60 dark:border-blue-800/50"
+                : "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/50"
+            }`}
+          >
+            {isCompetition ? "Competition" : "Program Funding"}
+          </span>
+        </div>
       </div>
     </motion.div>
   );
