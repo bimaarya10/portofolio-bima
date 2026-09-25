@@ -6,7 +6,9 @@ import { personalInfo } from "@/data/portfolio";
 
 export default function About() {
   return (
-    <section id="about" className="pt-12">
+    <section id="about" className="relative pt-12">
+      {/* Subtle section background */}
+      <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-blue-50/60 via-[#f0f5ff]/40 to-transparent dark:from-blue-950/10 dark:via-transparent dark:to-transparent pointer-events-none" />
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
@@ -44,7 +46,7 @@ export default function About() {
           className="grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
           {/* What I do */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 flex flex-col gap-3">
+          <div className="p-5 rounded-2xl bg-white/80 dark:bg-zinc-900/60 border border-blue-100/60 dark:border-zinc-800 hover:border-blue-200 dark:hover:border-blue-800/60 hover:shadow-sm hover:shadow-blue-100/50 dark:hover:shadow-none transition-all duration-200 flex flex-col gap-3">
             <div className="flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
               <div className="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400">
                 <Briefcase className="w-4 h-4" />
@@ -67,7 +69,7 @@ export default function About() {
           </div>
 
           {/* Interest areas */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 flex flex-col gap-3">
+          <div className="p-5 rounded-2xl bg-white/80 dark:bg-zinc-900/60 border border-blue-100/60 dark:border-zinc-800 hover:border-blue-200 dark:hover:border-blue-800/60 hover:shadow-sm hover:shadow-blue-100/50 dark:hover:shadow-none transition-all duration-200 flex flex-col gap-3">
             <div className="flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
               <div className="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400">
                 <FlaskConical className="w-4 h-4" />

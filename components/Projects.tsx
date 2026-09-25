@@ -10,7 +10,10 @@ export default function Projects() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="projects" className="pt-12">
+    <section id="projects" className="relative pt-12">
+      {/* Blue-accented section background */}
+      <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-[#eef3ff]/70 via-[#f5f8ff]/50 to-transparent dark:from-blue-950/8 dark:via-transparent dark:to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-2/3 h-1/2 bg-[radial-gradient(ellipse_50%_60%_at_90%_20%,rgba(99,102,241,0.06),transparent_70%)] dark:bg-[radial-gradient(ellipse_50%_60%_at_90%_20%,rgba(99,102,241,0.08),transparent_70%)] pointer-events-none -z-10" />
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
@@ -46,7 +49,7 @@ export default function Projects() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.55 }}
               whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
-              className="group relative rounded-3xl bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800 hover:border-blue-500/50 dark:hover:border-blue-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 overflow-hidden"
+              className="group relative rounded-3xl bg-white dark:bg-zinc-900/70 border border-blue-100/60 dark:border-zinc-800 hover:border-blue-400/60 dark:hover:border-blue-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 overflow-hidden"
             >
               <Link href={`/project/${featured.id}`} className="block p-6 sm:p-8">
                 {/* Gradient ambient overlay */}
@@ -121,7 +124,7 @@ export default function Projects() {
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
-                  className="group relative rounded-3xl bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800 hover:border-blue-500/50 dark:hover:border-blue-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 overflow-hidden flex flex-col"
+                  className="group relative rounded-3xl bg-white dark:bg-zinc-900/70 border border-blue-100/60 dark:border-zinc-800 hover:border-blue-400/60 dark:hover:border-blue-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 overflow-hidden flex flex-col"
                 >
                   <Link href={`/project/${project.id}`} className="flex flex-col h-full p-6 sm:p-7">
                     <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950 mb-5">
@@ -182,7 +185,7 @@ export default function Projects() {
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
-                  className="group relative rounded-2xl bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800 hover:border-blue-500/50 dark:hover:border-blue-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 overflow-hidden flex flex-col"
+                  className="group relative rounded-2xl bg-white dark:bg-zinc-900/70 border border-blue-100/60 dark:border-zinc-800 hover:border-blue-400/60 dark:hover:border-blue-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 overflow-hidden flex flex-col"
                 >
                   <Link href={`/project/${project.id}`} className="flex flex-col h-full p-5">
                     <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950 mb-4">

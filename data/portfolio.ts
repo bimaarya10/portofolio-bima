@@ -53,20 +53,20 @@ export const skillCategories: SkillCategory[] = [
   {
     name: "Data Science",
     category: "datascience",
-    tech: "Python, Data Analysis, Statistics, Data Visualization",
-    items: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Scikit-learn", "SQL"]
+    tech: "Data Analysis, Statistics, Data Visualization",
+    items: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "SQL"]
   },
   {
-    name: "Machine Learning Engineer",
+    name: "Machine Learning",
     category: "ml",
     tech: "Machine Learning, Model Development, Model Evaluation",
-    items: ["Python", "Scikit-learn", "TensorFlow/Keras", "Transfer Learning"]
+    items: ["Python", "Scikit-learn", "XGBoost", "Model Evaluation"]
   },
   {
     name: "Deep Learning",
     category: "deeplearning",
-    tech: "Deep Learning, Neural Networks, Model Development",
-    items: ["Python", "TensorFlow/Keras", "CNN", "Transfer Learning", "YOLO", "OpenCV"]
+    tech: "Neural Networks, Computer Vision, Deep Learning",
+    items: ["TensorFlow/Keras", "CNN", "Transfer Learning", "YOLO", "OpenCV"]
   },
   {
     name: "Mobile",

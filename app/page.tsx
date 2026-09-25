@@ -8,6 +8,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import TimelineSection from "@/components/TimelineSection";
+import Achievements from "@/components/Achievements";
 import Projects from "@/components/Projects";
 import TechMarquee from "@/components/TechMarquee";
 import ContactFooter from "@/components/ContactFooter";
@@ -24,7 +25,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300">
+    <div className="relative min-h-screen bg-[#f8faff] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 font-sans selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-blue-300">
       {/* Scroll Progress Bar at the top */}
       <ScrollProgress />
 
@@ -40,10 +41,13 @@ export default function Portfolio() {
         <About />
         <Skills />
         <TimelineSection />
+        <Achievements />
         <Projects />
         <TechMarquee />
-        <ContactFooter />
       </main>
+
+      {/* Contact + Footer — full bleed dark section, outside constrained main */}
+      <ContactFooter />
 
       {/* Easter Egg Toast Notification */}
       <EasterEggToast show={showEasterEgg} message="Still building things 🚀" />
