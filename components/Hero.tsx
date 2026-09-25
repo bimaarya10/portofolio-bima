@@ -82,7 +82,7 @@ export default function Hero({ onEasterEggTrigger }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative flex items-center pt-20 pb-10 sm:pb-12 lg:pb-14 -mb-6 sm:-mb-8"
+      className="relative flex items-center pt-28 sm:pt-32 lg:pt-36 pb-0 -mb-14 sm:-mb-20 lg:-mb-24"
     >
       {/* ── Subtle background ── */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
